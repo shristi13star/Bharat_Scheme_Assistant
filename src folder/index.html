@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bharat Scheme Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a2e0b2a01f.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+  
+  <div class="container">
+<!-- Sidebar Section (Initially Hidden) -->
+<div id="filterWrapper" class="hidden">
+<!-- Sidebar Toggle Button -->
+  <button class="sidebar-toggle" onclick="toggleSidebar()">☰ Filter</button>
+
+  <!-- Sidebar Panel -->
+  <aside class="sidebar" id="sidebar">
+    <h3><i class="fas fa-filter"></i> Filter</h3>
+
+    <label><i class="fas fa-map-marked-alt"></i> State</label>
+    <select id="stateSelect">
+      <option>Any</option>
+      <option>Andhra Pradesh</option>
+      <option>Arunachal Pradesh</option>
+      <option>Assam</option>
+      <option>Bihar</option>
+      <option>Chhattisgarh</option>
+      <option>Goa</option>
+      <option>Gujarat</option>
+      <option>Haryana</option>
+      <option>Himachal Pradesh</option>
+      <option>Jharkhand</option>
+      <option>Karnataka</option>
+      <option>Kerala</option>
+      <option>Madhya Pradesh</option>
+      <option>Maharashtra</option>
+      <option>Manipur</option>
+      <option>Meghalaya</option>
+      <option>Mizoram</option>
+      <option>Nagaland</option>
+      <option>Odisha</option>
+      <option>Punjab</option>
+      <option>Rajasthan</option>
+      <option>Sikkim</option>
+      <option>Tamil Nadu</option>
+      <option>Telangana</option>
+      <option>Tripura</option>
+      <option>Uttar Pradesh</option>
+      <option>Uttarakhand</option>
+      <option>West Bengal</option>
+    </select>
+
+    <label><i class="fas fa-venus-mars"></i> Gender</label>
+    <div class="radio-group">
+      <label><input type="radio" name="gender" value="Any" checked /> Any</label>
+      <label><input type="radio" name="gender" value="Male" /> Male</label>
+      <label><input type="radio" name="gender" value="Female" /> Female</label>
+    </div>
+
+    <label><i class="fas fa-bullseye"></i> Goal</label>
+    <select id="goalSelect">
+      <option>General</option>
+      <option>Business</option>
+      <option>Education</option>
+      <option>Healthcare</option>
+    </select>
+
+    <label><i class="fas fa-language"></i> Language</label>
+    <select id="languageSelect">
+      <option>Hinglish</option>
+      <option>English</option>
+      <option>Hindi</option>
+    </select>
+  </aside>
+</div>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <img src="indian.webp" alt="Logo" class="logo" />
+        <div>
+          <h1>Bharat Scheme Assistant 🇮🇳</h1>
+          <p>Helping you find the right Sarkari Yojnas in simple Hinglish</p>
+        </div>
+      </header>
+
+      <!-- Auth -->
+      <div class="auth-box" id="authBox">
+        <h2><i class="fas fa-lock"></i> Login / Signup</h2>
+        <div>
+          <label><input type="radio" name="auth" checked onclick="toggleAuth('login')"> Login</label>
+          <label><input type="radio" name="auth" onclick="toggleAuth('signup')"> Sign Up</label>
+        </div>
+        <input type="text" id="username" placeholder="Username" />
+        <input type="password" id="password" placeholder="Password" />
+        <button onclick="handleAuth()">Login</button>
+        <div id="authMessage" class="message-box"></div>
+      </div>
+
+      <!-- Chat Interface -->
+      <div class="chat-box hidden" id="chatBox">
+        <h3><i class="fas fa-comments"></i> Apna sawaal likhiye (Hindi, Hinglish):</h3>
+        <input type="text" id="userInput" placeholder="e.g. Main ek SC ladka hoon..." />
+        <button onclick="startVoiceInput()" class="mic-button" id="micButton">🎤 Speak</button>
+
+
+        <div class="sample">
+          <button onclick="fillSample('Scheme for girls education in UP')">📘 Girls education in UP</button>
+          <button onclick="fillSample('Ghar banane ke liye loan')">🏠 Ghar ke liye loan</button>
+        </div>
+
+        <div class="btn-group">
+          <button onclick="sendQuery()">🔎 Find My Yojnas</button>
+        </div>
+
+        <div class="response" id="responseBox"></div>
+        <div id="exportButtons" class="hidden">
+          <button onclick="downloadPDF()" class="mic-button">📄 Download as PDF</button>
+          <button onclick="shareWhatsApp()" class="mic-button">📤 Share on WhatsApp</button>
+        </div>
+
+      </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <button id="logoutFooter" class="logout-btn hidden" onclick="logout()">🚪 Logout</button>
+            <p class="footer-note">Made with ❤ for Bharat by your team.</p>
+        </div>
+    </footer>
+
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

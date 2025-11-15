@@ -1,0 +1,354 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(120deg, #1c1b2f 0%, #232946 100%);
+  color: #f8f9fa;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  transition: margin-left 0.3s ease;
+}
+
+.container.shifted {
+  margin-left: 260px;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 260px;
+  height: 100vh;
+  background: #2a2b3d;
+  padding: 20px;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.4);
+  border-right: 2px solid #3e3f5e;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar h3 {
+  color: #ffafcc;
+  font-size: 22px;
+  margin-top: 0;
+  padding-top: 10px;
+  text-shadow: 0 0 5px #ffafcc88;
+}
+
+.sidebar label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #f8f9fa;
+}
+
+.sidebar select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  background: #31354a;
+  color: #ffffff;
+  border: 2px solid #cdb4db;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  color: #f8f9fa;
+  font-weight: 500;
+}
+
+.radio-group input {
+  margin-right: 8px;
+  accent-color: #cdb4db;
+}
+
+/* Toggle Button */
+.sidebar-toggle {
+  position: fixed;
+  top: 415px; /* Move it clearly below the logo */
+  left: 70px; /* Push it right of the logo */
+  z-index: 1001;
+  background: linear-gradient(135deg, #a2d2ff, #ffafcc);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #2a2b3d;
+  box-shadow: 0 4px 12px rgba(255, 175, 204, 0.4);
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.sidebar-toggle:hover {
+  background: linear-gradient(135deg, #bde0fe, #ffc8dd);
+}
+
+/* Main */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 55px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 175, 204, 0.4);
+}
+
+h1, h2, h3 {
+  color: #ffffff;
+  text-shadow: 0 0 3px #cdb4dbcc;
+}
+
+/* Auth + Chat Boxes */
+.auth-box,
+.chat-box {
+  background: #2d3142;
+  padding: 40px;
+  border-radius: 18px;
+  max-width: 720px;
+  margin: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  margin-bottom: 30px;
+}
+
+.chat-box {
+  background: #2d3142;
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 900px;
+  min-width: 700px;
+  margin: 40px auto;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 0.6s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Form Elements */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  background: #3e4460;
+  color: #f1f1f1;
+  border: 2px solid #bde0fe;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+/* Buttons */
+button {
+  margin-top: 12px;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #a2d2ff, #ffafcc);
+  border: none;
+  color: #1e1e2f;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(255, 175, 204, 0.3);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #bde0fe, #ffc8dd);
+  transform: translateY(-2px);
+}
+
+/* Sample Buttons */
+.sample button {
+  background: #a2d2ff;
+  margin-right: 8px;
+  color: #2a2b3d;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 2px 12px rgba(162, 210, 255, 0.4);
+}
+
+.sample button:hover {
+  background: #bde0fe;
+}
+
+.btn-group {
+  margin-top: 10px;
+}
+
+/* Response Box */
+.response {
+  background:#3e4460;
+  padding: 18px;
+  margin-top: 24px;
+  border-radius: 12px;
+  min-height: 60px;
+  font-size: 16px;
+  color:#f8f9fa;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.footer {
+  background-color: #232946;
+  padding: 20px;
+  text-align: center;
+  border-top: 3px solid #ffafcc;
+  margin-top: 0px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-note {
+  color: #dee2e6;
+  font-size: 15px;
+}
+
+/* Logout Button */
+.logout-btn {
+  background-color: #ff758f;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.3s ease;
+  box-shadow: 0 2px 10px rgba(255, 117, 143, 0.3);
+}
+
+.logout-btn:hover {
+  background-color: #ff9eb8;
+}
+
+/* Misc */
+.hidden {
+  display: none !important;
+}
+
+.message-box {
+  margin-top: 10px;
+  color: #a2d2ff;
+  font-style: italic;
+  font-weight: 600;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+#logoutFooter {
+  margin-bottom: 10px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2a2b3d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a2d2ff;
+  border-radius: 10px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mic Button Base */
+.mic-button {
+  margin-top: 10px;
+  background: #ffafcc;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #2a2b3d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mic-button:hover {
+  background: #ffc8dd;
+}
+
+/* Glowing Animation */
+.mic-button.recording {
+  background: #ff4d6d;
+  color: white;
+  box-shadow: 0 0 8px #ff4d6d, 0 0 15px #ff4d6d, 0 0 25px #ff4d6d;
+  animation: glowPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 8px #ff4d6d;
+  }
+  50% {
+    box-shadow: 0 0 20px #ff4d6d;
+  }
+  100% {
+    box-shadow: 0 0 8px #ff4d6d;
+  }
+}
+
+#exportButtons {
+  margin-top: 15px;
+  display: flex;
+  gap: 12px;
+}
